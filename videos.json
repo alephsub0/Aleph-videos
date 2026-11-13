@@ -3,6 +3,11 @@
         "titulo": "Agrupamiento jerárquico",
         "descripcion": "Introducción al agrupamiento jerárquico y sus funciones de enlace.",
         "archivo": "videos/001-clustering.mp4",
+        "poster": "assets/001-clustering-poster.jpg",
+        "duracion_segundos": 107,
+        "orientacion": "horizontal",
+        "categorias": ["Aprendizaje automático"],
+        "etiquetas": ["agrupamiento", "clustering", "dendrograma", "enlace simple"],
         "fecha": "2026-11-13"
     }
 ]

@@ -42,14 +42,18 @@ El proceso comprende la planificación de escenas, la elaboración y revisión d
 
 Este repositorio contiene exclusivamente los videos terminados y aprobados para su publicación.
 
-Los videos están disponibles para su visualización y descarga individual, así como mediante una galería web pública.
+Los videos están disponibles para su visualización en una galería web pública.
 
 El código fuente, los guiones de producción, los recursos de trabajo y las configuraciones se mantienen en un repositorio privado independiente.
 
 ### Contenido del repositorio
 
 - `videos/`: archivos MP4 de los videos publicados.
-- `index.html`: galería web para visualizar y descargar los videos.
+- `index.html`: galería web para explorar y reproducir los videos.
+- `videos.json`: datos de cada video y filtros de la galería.
+- `assets/`: logotipos e imágenes de vista previa.
+
+Cada entrada de `videos.json` incluye `titulo`, `descripcion`, `archivo`, `fecha`, `poster`, `duracion_segundos`, `orientacion` (`horizontal` o `vertical`), `categorias` y `etiquetas`. La duración visible se calcula a partir de `duracion_segundos`; las categorías alimentan automáticamente el panel lateral y las etiquetas amplían la búsqueda.
 
 ## Créditos
 

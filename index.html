@@ -1,171 +1,106 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Aleph Videos: divulgación matemática y científica del Proyecto Alephsub0.">
-<meta name="theme-color" content="#173a62">
-<title>Aleph Videos | Proyecto Alephsub0</title>
-<link rel="icon" href="./assets/LogoAlephsub0-02.png">
-<style>
-:root{--blue:#173a62;--blue2:#275d91;--ink:#203348;--muted:#64758a;--paper:#f5f7fa;--white:#fff;--line:#dce4ec;--shadow:0 12px 32px rgba(21,48,78,.08)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}
-.wrap{max-width:1180px;margin:auto;padding:0 26px}
-.top{background:white;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
-.top-inner{display:flex;align-items:center;justify-content:space-between;min-height:80px;gap:20px}
-.brand{display:flex;align-items:center;gap:14px;font-weight:750;color:var(--blue);letter-spacing:-.025em;font-size:1.25rem}
-.brand img{width:52px;height:52px;object-fit:contain}.brand small{display:block;color:var(--muted);font-size:.72rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;line-height:1.2}
-.links{display:flex;gap:24px;align-items:center;font-size:.92rem;color:var(--blue)}.links a:hover{color:var(--blue2)}
-.hero{background:linear-gradient(115deg,#173a62 0%,#234d77 65%,#2f628d 100%);color:white;overflow:hidden;position:relative}
-.hero:after{content:"";position:absolute;right:4%;top:1px;width:200px;height:200px;background:url("./assets/LogoAlephsub0-01-blanco.png") center/contain no-repeat;opacity:.12;pointer-events:none}
-.hero-inner{padding:44px 26px 52px;position:relative;z-index:1}.eyebrow{letter-spacing:.16em;text-transform:uppercase;font-size:.76rem;font-weight:700;color:#b7d7f3}
-.hero h1{font:normal clamp(3rem,6vw,5.4rem)/1.08 Georgia,"Times New Roman",serif;letter-spacing:-.035em;margin:10px 0 12px}
-.hero p{max-width:620px;color:#e0ebf5;font-size:1.1rem;margin:0}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border-radius:7px;padding:11px 20px;font-weight:650;font-size:.93rem;border:1px solid transparent}
-.btn-light{background:white;color:var(--blue)}.btn-outline{border-color:#9bbbd6;color:white}.btn:hover{filter:brightness(.94)}
-.section{padding:62px 0 80px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px}
-.kicker{color:var(--blue2);font-weight:750;text-transform:uppercase;font-size:.75rem;letter-spacing:.13em}
-h2{font:normal 2.15rem/1.2 Georgia,serif;margin:7px 0 8px;color:var(--blue)}.intro{color:var(--muted);margin:0;max-width:600px}
-.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.filters input,.filters select{background:white;color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:11px 13px;min-height:46px}
-.filters input{width:245px}.filters input:focus,.filters select:focus{outline:2px solid #7cb1de;outline-offset:1px}
-.meta{color:var(--muted);font-size:.9rem;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.card{min-width:0;background:white;border:1px solid var(--line);border-radius:11px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
-.media{background:#0e1a2a;display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;overflow:hidden}
-.media.vertical{aspect-ratio:16/10}.media video{width:100%;height:100%;object-fit:contain;display:block}
-.card-body{padding:22px;display:flex;flex-direction:column;flex:1}
-.card h3{font:normal 1.32rem/1.3 Georgia,serif;color:var(--blue);margin:0 0 10px}
-.desc{color:var(--muted);font-size:.93rem;margin:0 0 16px;flex:1}
-.card-meta{font-size:.78rem;color:var(--muted);margin-bottom:15px}
-.card-actions{display:flex;flex-wrap:wrap;gap:10px;border-top:1px solid var(--line);padding-top:15px}
-.card-actions a,.card-actions button{color:var(--blue2);font-size:.88rem;font-weight:650;background:none;border:0;padding:0}
-.card-actions a:hover,.card-actions button:hover{text-decoration:underline}
-.message{grid-column:1/-1;text-align:center;padding:70px 20px;background:white;border:1px dashed var(--line);border-radius:11px;color:var(--muted)}
-.about{background:white;border-top:1px solid var(--line);padding:46px 0}
-.about-inner{display:flex;justify-content:space-between;align-items:center;gap:30px}.about p{max-width:720px;margin:0;color:var(--muted)}
-.footer{background:#102c4b;color:#c8d8e8;padding:30px 0;font-size:.87rem}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer a{color:white}
-dialog{border:0;border-radius:12px;padding:0;background:#0d1725;color:white;width:min(950px,94vw);max-height:92vh;box-shadow:0 30px 80px #0008}
-dialog::backdrop{background:#081525cc}.dialog-head{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;gap:15px}.dialog-head h3{margin:0;font-size:1rem;font-weight:600}.dialog-head button{background:none;border:0;color:white;font-size:1.7rem}dialog video{display:block;width:100%;max-height:75vh;background:black}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero:after{top:35px;width:180px;height:180px}}
-@media(max-width:620px){.wrap{padding:0 18px}.top-inner{min-height:70px}.brand img{width:42px;height:42px}.brand{font-size:1.1rem}.links{gap:12px;font-size:.82rem}.links a:first-child{display:none}.hero-inner{padding:36px 18px 42px}.hero:after{top:10px;right:-25px;width:140px;height:140px}.section{padding:42px 0 60px}.grid{grid-template-columns:1fr}.filters,.filters input,.filters select{width:100%}.about-inner{align-items:start;flex-direction:column}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Aleph Videos: ideas de matemática y ciencia contadas con animación.">
+  <meta name="theme-color" content="#102e55">
+  <title>Aleph Videos · Matemática en movimiento</title>
+  <link rel="icon" href="./assets/LogoAlephsub0-02.png">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
 </head>
 <body>
-<header class="top">
- <div class="wrap top-inner">
-  <a class="brand" href="https://alephsub0.org/" aria-label="Página principal de Alephsub0">
-   <img src="./assets/LogoAlephsub0-02.png" alt="Logotipo de Alephsub0" style="width: 40%; max-width: 500px; height: auto;>
-  </a>
-  <nav class="links" aria-label="Navegación principal">
-   <a href="https://alephsub0.org/">Proyecto</a>
-   <a href="#galeria">Videos</a>
-   <a href="https://github.com/alephsub0/Aleph-videos" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-  </nav>
- </div>
-</header>
-<section class="hero">
- <div class="wrap hero-inner">
-  <div class="eyebrow">Proyecto Alephsub0 · Biblioteca audiovisual</div>
-  <h1>Aleph Videos</h1>
-  <p>Matemática y ciencia explicadas mediante animaciones, ejemplos y narraciones. Explora nuestros videos educativos y de divulgación.</p>
- </div>
-</section>
-<main>
-<section id="galeria" class="section">
- <div class="wrap">
-  <div class="section-head">
-   <div><h2>Galería de videos</h2><p class="intro">Reproduce, comparte o descarga los videos publicados.</p></div>
-   <div class="filters">
-    <input id="buscar" type="search" placeholder="Buscar por título o tema" aria-label="Buscar videos">
-    <select id="orden" aria-label="Ordenar videos">
-     <option value="recientes">Más recientes</option><option value="antiguos">Más antiguos</option><option value="titulo">Por título</option>
-    </select>
-   </div>
-  </div>
-  <div class="meta" id="contador" aria-live="polite"></div>
-  <div id="lista" class="grid" aria-live="polite"><div class="message">Cargando videos…</div></div>
- </div>
-</section>
-<section class="about">
- <div class="wrap about-inner">
-  <div><div class="kicker">Sobre esta colección</div><h2>Aprender con animaciones</h2><p>Los videos se producen con Manim, LaTeX y narración sincronizada. Esta galería reúne las versiones finales; los archivos de producción se mantienen en un repositorio privado.</p></div>
-  <a class="btn" style="background:var(--blue);color:white;white-space:nowrap" href="https://alephsub0.org/">Visitar Alephsub0 ↗</a>
- </div>
-</section>
-</main>
-<footer class="footer"><div class="wrap footer-inner"><span>© <span id="anio"></span> Proyecto Alephsub0</span><span>Más que simple matemática · <a href="https://github.com/alephsub0/Aleph-videos">Repositorio público</a></span></div></footer>
-<dialog id="reproductor" aria-label="Reproductor de video">
- <div class="dialog-head"><h3 id="tituloModal"></h3><button id="cerrar" aria-label="Cerrar reproductor">×</button></div>
- <video id="videoModal" controls playsinline preload="metadata"></video>
-</dialog>
-<script>
-"use strict";
-const lista=document.getElementById("lista"),buscar=document.getElementById("buscar"),orden=document.getElementById("orden"),contador=document.getElementById("contador");
-const dialogo=document.getElementById("reproductor"),videoModal=document.getElementById("videoModal");
-let videos=[];
-document.getElementById("anio").textContent=new Date().getFullYear();
-function urlVideo(ruta){
- if(typeof ruta!=="string"||!ruta.trim())return null;
- try{
-  const url=new URL(ruta,document.baseURI);
-  if(!["https:","http:"].includes(url.protocol))return null;
-  return url.href;
- }catch{return null}
-}
-function texto(etiqueta,contenido,clase){
- const e=document.createElement(etiqueta);e.textContent=contenido||"";if(clase)e.className=clase;return e;
-}
-function abrir(video){
- const url=urlVideo(video.archivo);if(!url)return;
- document.getElementById("tituloModal").textContent=video.titulo;
- videoModal.src=url;dialogo.showModal();videoModal.play().catch(()=>{});
-}
-function tarjeta(video){
- const articulo=document.createElement("article");articulo.className="card";
- const media=texto("div","","media"+(video.formato==="vertical"?" vertical":""));
- const reproductor=document.createElement("video");
- reproductor.controls=true;reproductor.preload="none";reproductor.playsInline=true;
- reproductor.setAttribute("aria-label","Reproducir "+video.titulo);
- const url=urlVideo(video.archivo);
- reproductor.src=url;media.append(reproductor);
- const cuerpo=texto("div","","card-body");
- cuerpo.append(texto("h3",video.titulo),texto("p",video.descripcion||"","desc"));
- if(video.fecha){
-  const fecha=new Date(video.fecha+"T12:00:00");
-  cuerpo.append(texto("div",Number.isNaN(fecha.getTime())?video.fecha:fecha.toLocaleDateString("es-EC",{day:"numeric",month:"long",year:"numeric"}),"card-meta"));
- }
- const acciones=texto("div","","card-actions");
- const ver=texto("button","Ver en grande");ver.type="button";ver.addEventListener("click",()=>abrir(video));
- const enlace=texto("a","Enlace directo ↗");enlace.href=url;enlace.target="_blank";enlace.rel="noopener noreferrer";
- const descargar=texto("a","Descargar MP4 ↓");descargar.href=url;descargar.download=(new URL(url)).pathname.split("/").pop()||"video.mp4";
- acciones.append(ver,enlace,descargar);cuerpo.append(acciones);articulo.append(media,cuerpo);
- return articulo;
-}
-function render(){
- const q=buscar.value.trim().toLocaleLowerCase("es");
- const resultados=videos.filter(v=>(v.titulo+" "+(v.descripcion||"")).toLocaleLowerCase("es").includes(q));
- resultados.sort((a,b)=>orden.value==="titulo"?a.titulo.localeCompare(b.titulo,"es"):orden.value==="antiguos"?(a.fecha||"").localeCompare(b.fecha||""):(b.fecha||"").localeCompare(a.fecha||""));
- contador.textContent=`${resultados.length} ${resultados.length===1?"video":"videos"}`;
- lista.replaceChildren();
- if(!resultados.length){lista.append(texto("div",videos.length?"No se encontraron videos con ese criterio.":"Próximamente encontrarás aquí los videos publicados.","message"));return}
- resultados.forEach(v=>lista.append(tarjeta(v)));
-}
-buscar.addEventListener("input",render);orden.addEventListener("change",render);
-function cerrar(){videoModal.pause();videoModal.removeAttribute("src");videoModal.load();dialogo.close()}
-document.getElementById("cerrar").addEventListener("click",cerrar);
-dialogo.addEventListener("click",e=>{if(e.target===dialogo)cerrar()});
-dialogo.addEventListener("close",()=>{videoModal.pause();videoModal.removeAttribute("src");videoModal.load()});
-(async()=>{
- try{
-  const r=await fetch("./videos.json",{cache:"no-store"});
-  if(!r.ok)throw Error("HTTP "+r.status);
-  const data=await r.json();if(!Array.isArray(data))throw Error("Se esperaba una lista");
-  videos=data.filter(v=>v&&typeof v.titulo==="string"&&urlVideo(v.archivo));
-  render();
- }catch(err){console.error(err);contador.textContent="";lista.replaceChildren(texto("div","No se pudo cargar la galería. Comprueba que videos.json exista y contenga un arreglo JSON válido.","message"))}
-})();
-</script>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="https://alephsub0.org/" aria-label="Ir a Alephsub0">
+        <img src="./assets/LogoAlephsub0-01-blanco.png" width="42" height="42" alt="">
+        <span class="brand-wordmark">ALEPH<span>SUB0</span><small>VIDEOS / LAB</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a class="nav-current" href="#galeria">Colección</a>
+        <a href="https://alephsub0.org/">El proyecto <span aria-hidden="true">↗</span></a>
+      </nav>
+      <span class="header-index" aria-hidden="true"><span class="live-dot"></span> BIBLIOTECA DIGITAL</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="shell hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> BIBLIOTECA AUDIOVISUAL</p>
+          <h1 id="hero-title">La matemática se mueve<span class="period">.</span></h1>
+          <p class="hero-description">Explora ideas de matemática y ciencia a través de videos y animaciones.</p>
+        </div>
+        <div class="hero-logo">
+          <img src="./assets/LogoAlephsub0-02.png" alt="Alephsub0: Más que simple matemática" width="1192" height="326">
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria" class="collection" aria-labelledby="gallery-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <h2 id="gallery-title">Explora los videos<span>.</span></h2>
+          </div>
+          <div class="collection-count" aria-live="polite"><strong id="totalVideos">—</strong><span>VIDEOS<br>DISPONIBLES</span></div>
+        </div>
+
+        <div class="catalog-layout">
+          <aside class="filter-sidebar" aria-label="Filtros de la colección">
+            <details id="filterDetails" class="filter-panel" open>
+              <summary><span>Filtrar videos</span><span class="filter-toggle" aria-hidden="true">⌄</span></summary>
+              <form id="filtros">
+                <fieldset><legend>Categorías</legend><div id="categoryOptions" class="filter-options"></div></fieldset>
+                <fieldset><legend>Orientación</legend><div class="filter-options">
+                  <label class="filter-option"><input type="radio" name="orientacion" value="todas" checked><span>Todas</span></label>
+                  <label class="filter-option"><input type="radio" name="orientacion" value="horizontal"><span>Horizontal</span></label>
+                  <label class="filter-option"><input type="radio" name="orientacion" value="vertical"><span>Vertical</span></label>
+                </div></fieldset>
+                <fieldset><legend>Duración</legend><div class="filter-options">
+                  <label class="filter-option"><input type="radio" name="duracion" value="todas" checked><span>Cualquier duración</span></label>
+                  <label class="filter-option"><input type="radio" name="duracion" value="corta"><span>Menos de 3 min</span></label>
+                  <label class="filter-option"><input type="radio" name="duracion" value="media"><span>De 3 a 10 min</span></label>
+                  <label class="filter-option"><input type="radio" name="duracion" value="larga"><span>Más de 10 min</span></label>
+                </div></fieldset>
+                <button class="reset-filters" type="reset">Limpiar filtros <span aria-hidden="true">↗</span></button>
+              </form>
+            </details>
+          </aside>
+          <div class="catalog-main">
+        <div class="toolbar" role="search">
+          <label class="search-field" for="buscar">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+            <input id="buscar" type="search" placeholder="Buscar por título o tema" autocomplete="off">
+            <span class="search-shortcut" aria-hidden="true">⌕</span>
+          </label>
+          <label class="sort-field" for="orden"><span>ORDENAR POR</span><select id="orden"><option value="recientes">Más recientes</option><option value="antiguos">Más antiguos</option><option value="titulo">Título A–Z</option></select></label>
+        </div>
+        <div class="result-line"><span id="contador" aria-live="polite">Cargando colección…</span><span class="result-decoration" aria-hidden="true">ALEPHSUB0 / VIDEO ARCHIVE</span></div>
+        <div id="lista" class="video-grid" aria-live="polite"><div class="message">Cargando videos…</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" aria-labelledby="about-title">
+      <div class="shell about-inner">
+        <div><p class="section-label"><span class="section-label-number">02</span> / DETRÁS DE CADA VIDEO</p><h2 id="about-title">La ciencia también<br>se puede <em>imaginar.</em></h2></div>
+        <div class="about-copy"><p>Animación, narración y pensamiento matemático en un mismo lugar. Cada pieza está creada para hacer visible lo que antes parecía abstracto.</p><a href="https://alephsub0.org/" class="text-link">Conoce el proyecto <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-inner"><span>© <span id="anio"></span> ALEPHSUB0 <span class="footer-divider">/</span> MÁS QUE SIMPLE MATEMÁTICA</span><a href="https://github.com/alephsub0/Aleph-videos" target="_blank" rel="noopener noreferrer">REPOSITORIO <span aria-hidden="true">↗</span></a></div></footer>
+
+  <dialog id="reproductor" class="player-dialog" aria-labelledby="tituloModal">
+    <div class="player-shell">
+      <div class="dialog-head"><div class="dialog-title"><span class="live-dot"></span><div><span class="dialog-eyebrow">ALEPH VIDEOS <span aria-hidden="true">/</span> REPRODUCIENDO</span><h3 id="tituloModal"></h3></div></div><button id="cerrar" class="close-button" type="button" aria-label="Cerrar reproductor">×</button></div>
+      <div class="player-screen"><video id="videoModal" controls playsinline preload="metadata" controlslist="nodownload" disablepictureinpicture></video></div>
+      <div class="player-foot"><span>APRENDE · EXPLORA · DESCUBRE</span><span id="playerCounter">ALEPHSUB0 / 001</span></div>
+    </div>
+  </dialog>
 </body>
 </html>
