@@ -7,9 +7,6 @@ const contador = document.getElementById("contador");
 const totalVideos = document.getElementById("totalVideos");
 const filtros = document.getElementById("filtros");
 const categoryOptions = document.getElementById("categoryOptions");
-const dialogo = document.getElementById("reproductor");
-const videoModal = document.getElementById("videoModal");
-const playerScreen = dialogo.querySelector(".player-screen");
 let videos = [];
 
 document.getElementById("anio").textContent = new Date().getFullYear();
@@ -72,21 +69,15 @@ function opcionesCategoria() {
   }
 }
 
-function abrir(video, indice) {
-  const url = urlSegura(video.archivo);
-  if (!url) return;
-  document.getElementById("tituloModal").textContent = video.titulo;
-  document.getElementById("playerCounter").textContent = `ALEPHSUB0 / ${String(indice + 1).padStart(3, "0")}`;
-  playerScreen.classList.toggle("vertical", orientacionVideo(video) === "vertical");
-  videoModal.poster = urlSegura(video.poster) || "";
-  videoModal.src = url;
-  dialogo.showModal();
-  videoModal.play().catch(() => {});
-}
-
 function crearTarjeta(video, indice) {
   const articulo = elemento("article", "", "video-card");
-  const media = elemento("div", "", "video-preview");
+  const url = urlSegura(video.archivo);
+  const media = elemento("a", "", "video-preview");
+  media.href = url;
+  media.target = "_blank";
+  media.rel = "noopener noreferrer";
+  media.setAttribute("aria-label", `Abrir ${video.titulo} en una pestaña nueva`);
+  if (orientacionVideo(video) === "vertical") media.classList.add("vertical");
   const poster = urlSegura(video.poster);
   if (poster) {
     const imagen = document.createElement("img");
@@ -102,11 +93,9 @@ function crearTarjeta(video, indice) {
   arriba.append(elemento("span", orientacionVideo(video) === "vertical" ? "VERTICAL" : "HORIZONTAL", "preview-type"));
   media.append(arriba);
 
-  const play = elemento("button", "", "preview-play");
-  play.type = "button";
-  play.setAttribute("aria-label", `Reproducir ${video.titulo}`);
+  const play = elemento("span", "", "preview-play");
+  play.setAttribute("aria-hidden", "true");
   play.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.8a1 1 0 0 1 1.5-.86l12.1 8.2a1 1 0 0 1 0 1.72L8.5 21.06A1 1 0 0 1 7 20.2Z"/></svg>';
-  play.addEventListener("click", () => abrir(video, indice));
   media.append(play);
 
   const abajo = elemento("div", "", "preview-bottom");
@@ -116,17 +105,19 @@ function crearTarjeta(video, indice) {
   media.append(abajo);
 
   const cuerpo = elemento("div", "", "card-content");
-  cuerpo.append(elemento("p", indice === 0 ? "VIDEO DESTACADO" : "EXPLORA EL VIDEO", "card-overline"));
+  cuerpo.append(elemento("p", "VIDEO EDUCATIVO", "card-overline"));
   const chips = elemento("div", "", "card-categories");
   categoriasVideo(video).forEach(categoria => chips.append(elemento("span", categoria, "category-chip")));
   if (chips.childElementCount) cuerpo.append(chips);
   cuerpo.append(elemento("h3", video.titulo), elemento("p", video.descripcion || "Una nueva perspectiva sobre ciencia y matemática.", "card-description"));
   const pie = elemento("div", "", "card-bottom");
   pie.append(elemento("span", fechaLegible(video.fecha), "card-date"));
-  const accion = elemento("button", "Reproducir video", "card-action");
-  accion.type = "button";
+  const accion = elemento("a", "Abrir video", "card-action");
+  accion.href = url;
+  accion.target = "_blank";
+  accion.rel = "noopener noreferrer";
+  accion.setAttribute("aria-label", `Abrir ${video.titulo} en una pestaña nueva`);
   accion.append(elemento("span", "↗"));
-  accion.addEventListener("click", () => abrir(video, indice));
   pie.append(accion);
   cuerpo.append(pie);
   articulo.append(media, cuerpo);
@@ -179,16 +170,6 @@ filtros.addEventListener("reset", () => {
   requestAnimationFrame(render);
 });
 if (window.matchMedia("(max-width: 620px)").matches) document.getElementById("filterDetails").open = false;
-document.getElementById("cerrar").addEventListener("click", () => dialogo.close());
-dialogo.addEventListener("click", evento => {
-  if (evento.target === dialogo) dialogo.close();
-});
-dialogo.addEventListener("close", () => {
-  videoModal.pause();
-  videoModal.removeAttribute("src");
-  videoModal.removeAttribute("poster");
-  videoModal.load();
-});
 
 (async () => {
   try {

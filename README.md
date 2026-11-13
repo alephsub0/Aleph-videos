@@ -14,9 +14,9 @@
 <p align="center">
     Colección de videos educativos y de divulgación matemática de Alephsub0.
     <br />
-    <a href="https://github.com/andres-merino/Aleph-videos/issues">Reportar un problema</a>
+    <a href="https://github.com/alephsub0/Aleph-videos/issues">Reportar un problema</a>
     ·
-    <a href="https://andres-merino.github.io/Aleph-videos/">Ver galería de videos</a>
+    <a href="https://alephsub0.github.io/Aleph-videos/">Ver galería de videos</a>
 </p>
 
 </div>
@@ -43,6 +43,7 @@ El proceso comprende la planificación de escenas, la elaboración y revisión d
 Este repositorio contiene exclusivamente los videos terminados y aprobados para su publicación.
 
 Los videos están disponibles para su visualización en una galería web pública.
+La miniatura y la acción «Abrir video» abren el archivo MP4 original en una pestaña nueva.
 
 El código fuente, los guiones de producción, los recursos de trabajo y las configuraciones se mantienen en un repositorio privado independiente.
 
