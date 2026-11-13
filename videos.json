@@ -1,13 +1,40 @@
 [
     {
+        "titulo": "Gradiente normal a superficies de nivel y optimización",
+        "descripcion": "Interpretación geométrica del gradiente como vector normal a las superficies de nivel y su relación con la optimización de funciones.",
+        "archivo": "videos/002-gradiente-normal-a-superficies-de-nivel-ligado-a-optimizacion.mp4",
+        "poster": "assets/002-gradiente-normal-a-superficies-de-nivel-ligado-a-optimizacion-poster.jpg",
+        "duracion_segundos": 109,
+        "orientacion": "horizontal",
+        "categorias": [
+            "Cálculo multivariable",
+            "Optimización matemática"
+        ],
+        "etiquetas": [
+            "gradiente",
+            "superficies de nivel",
+            "vector normal",
+            "derivadas parciales",
+            "optimización"
+        ],
+        "fecha": "2026-11-13"
+    },
+    {
         "titulo": "Agrupamiento jerárquico",
         "descripcion": "Introducción al agrupamiento jerárquico y sus funciones de enlace.",
         "archivo": "videos/001-clustering.mp4",
         "poster": "assets/001-clustering-poster.jpg",
         "duracion_segundos": 107,
         "orientacion": "horizontal",
-        "categorias": ["Aprendizaje automático"],
-        "etiquetas": ["agrupamiento", "clustering", "dendrograma", "enlace simple"],
+        "categorias": [
+            "Aprendizaje automático"
+        ],
+        "etiquetas": [
+            "agrupamiento",
+            "clustering",
+            "dendrograma",
+            "enlace simple"
+        ],
         "fecha": "2026-11-13"
     }
 ]
